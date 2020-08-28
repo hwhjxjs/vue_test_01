@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-26 17:58:12
- * @LastEditTime: 2020-08-28 11:10:26
+ * @LastEditTime: 2020-08-28 13:52:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue_test_01/src/components/Login.vue
@@ -34,8 +34,8 @@ export default {
     return {
       // 登录表单的绑定对象
       loginModel: {
-        username: 'zs',
-        password: '123'
+        username: 'admin',
+        password: '123456'
       },
       userRule: {
         username: [
@@ -65,6 +65,8 @@ export default {
           return this.$message.error('登录失败')
         }
         this.$message.success('登陆成功')
+        window.sessionStorage.setItem('token', res.data.token)
+        this.$router.push('/home')
       })
     }
   }
